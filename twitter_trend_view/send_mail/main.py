@@ -76,6 +76,7 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
 # main関数を実行(GCPのCloud Functions用にevent,contextが引数に)
 # トリガーをpub/subに設定、ファイルダウンロードしてメール送信
 def main(event, context):
+    input_mail_address()
     download_blob('ストレージのバケット名を指定', f'trend_data{japan_time.strftime("%Y年%m月%d日")}.xlsx', f'/tmp/trend_data{japan_time.strftime("%Y年%m月%d日")}.xlsx')
     sendGmailAttach()
     
